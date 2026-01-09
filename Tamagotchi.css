@@ -1,0 +1,29 @@
+.button button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+.pet-status {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #333;
+    margin: 10px 0;
+}
+.tamagotchi{
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 15px;
+    border: 2px solid #4CAF50;
+    padding: 20px;
+    width: 300px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
