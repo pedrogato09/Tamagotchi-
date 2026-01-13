@@ -1,29 +1,93 @@
-.button button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px 24px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 12px;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
 }
-.pet-status {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    color: #333;
-    margin: 10px 0;
-}
-.tamagotchi{
+
+#Stats{
+    position: absolute;
     text-align: center;
-    margin-top: 50px;
-    border-radius: 15px;
-    border: 2px solid #4CAF50;
-    padding: 20px;
-    width: 300px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    bottom: 500px;
+}
+
+/* 
+    Pixel Art Cat (High Detail Version)
+    - Smaller overall size
+    - Higher resolution grid for more detail
+*/
+.pixel-cat {
+    /* 
+       Smaller pixel size for more detail 
+    */
+    font-size: 5px; 
+    width: 1em;
+    height: 1em;
+    color: #222;
     
+    /* 
+       Coordinate system: 1em = 5px
+       The grid is now finer, allowing for more detailed curves
+    */
+    box-shadow: 
+        /* === EARS === */
+        /* Left Ear Tip */
+        -6em -9em, -7em -8em, -5em -8em,
+        /* Left Ear Body */
+        -8em -7em, -4em -7em,
+        -8em -6em, -4em -6em,
+        
+        /* Right Ear Tip */
+        6em -9em, 7em -8em, 5em -8em,
+        /* Right Ear Body */
+        8em -7em, 4em -7em,
+        8em -6em, 4em -6em,
+
+        /* === HEAD TOP === */
+        -3em -6em, -2em -6em, -1em -6em, 0em -6em, 1em -6em, 2em -6em, 3em -6em,
+
+        /* === HEAD SIDES === */
+        -9em -5em, 9em -5em,
+        -9em -4em, 9em -4em,
+        -9em -3em, 9em -3em,
+        -9em -2em, 9em -2em,
+        -9em -1em, 9em -1em,
+        -9em 0em,  9em 0em,
+        
+        /* === CHEEKS (Rounding) === */
+        -9em 1em, 9em 1em,
+        -8em 2em, 8em 2em,
+        -8em 3em, 8em 3em,
+        -7em 4em, 7em 4em,
+        -6em 5em, 6em 5em,
+
+        /* === CHIN === */
+        -5em 6em, -4em 6em, -3em 6em, -2em 6em, -1em 6em, 
+        0em 6em, 
+        1em 6em, 2em 6em, 3em 6em, 4em 6em, 5em 6em,
+
+        /* === FACE FEATURES === */
+        
+        /* Eyes (Vertical Oval) */
+        -4em -2em, -3em -2em,     /* Left Top */
+        -4em -1em, -3em -1em,     /* Left Bottom */
+        
+        4em -2em, 3em -2em,       /* Right Top */
+        4em -1em, 3em -1em,       /* Right Bottom */
+
+        /* Whiskers Left */
+        -7em 0em, -6em 0em,
+        -7em 2em, -6em 2em,
+
+        /* Whiskers Right */
+        7em 0em, 6em 0em,
+        7em 2em, 6em 2em,
+
+        /* Mouth */
+        -2em 2em, -1em 3em, 0em 2em, 1em 3em, 2em 2em;
+
+    /* Reduced scale as requested */
+    transform: scale(2.5);
 }
