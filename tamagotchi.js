@@ -17,3 +17,25 @@ function stats(){
 }
 
 setInterval(stats, 1000)
+
+function eten() {
+    Honger += 10;
+    if (Honger > 100) Honger = 100;
+    document.getElementById("HongerStat").innerText = Honger;
+}
+
+function slapen() {
+    Slaap += 10;
+    if (Slaap > 100) Slaap = 100;
+    document.getElementById("SlaapStat").innerText = Slaap;
+}
+
+function spelen() {
+    Plezier += 10;
+    if (Plezier > 100) Plezier = 100;
+    document.getElementById("PlezierStat").innerText = Plezier;
+}
+
+Honger = Math.max(0, Honger - 1);
+Slaap = Math.max(0, Slaap - 1);
+Plezier = Math.max(0, Plezier - 1);
