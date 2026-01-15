@@ -1,17 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --bg-color: #f0f4c3;
+    --border-color: #333;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-color: var(--bg-color);
     margin: 0;
+    font-family: 'Press Start 2P', cursive, monospace;
+    gap: 60px; /* Space between stats and cat */
+    
+    /* Retro grid background */
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
 }
 
-#Stats{
-    position: absolute;
-    text-align: center;
-    bottom: 500px;
+#Stats {
+    background-color: #fff;
+    padding: 20px;
+    border: 4px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.1);
+    text-align: left;
+    min-width: 250px;
+    
+    /* Replaced absolute positioning with Flexbox flow */
+    position: relative;
+    top: -120px;
+    
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
 }
+
+/* Labels */
+#Honger, #Slaap, #Plezier {
+    font-size: 12px;
+    padding: 5px 0;
+}
+
+/* Values */
+#HongerStat, #SlaapStat, #PlezierStat {
+    font-size: 12px;
+    text-align: right;
+    font-weight: bold;
+}
+
+/* Colors */
+#Honger, #HongerStat { color: #d32f2f; }
+#Slaap, #SlaapStat   { color: #388e3c; }
+#Plezier, #PlezierStat { color: #7b1fa2; }
+
+
 
 /* 
     Pixel Art Cat (High Detail Version)
