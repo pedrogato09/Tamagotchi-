@@ -1,6 +1,6 @@
-let Honger = 10
-let Slaap = 10
-let Plezier = 10    
+let Honger = 100
+let Slaap = 100
+let Plezier = 100
 let musicStarted = false;
 
 
@@ -89,3 +89,4 @@ function spelen() {
 Honger = Math.max(0, Honger - 1);
 Slaap = Math.max(0, Slaap - 1);
 Plezier = Math.max(0, Plezier - 1);
+
