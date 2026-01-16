@@ -1,6 +1,31 @@
 let Honger = 100
 let Slaap = 100
 let Plezier = 100
+let musicStarted = false;
+
+
+function playBackgroundMusic() {
+    if (!musicStarted) {
+        const bgMusic = document.getElementById("backgroundMusic");
+        bgMusic.volume = 0.3;
+        bgMusic.muted = false;
+        const playPromise = bgMusic.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(error => console.log("Background music play failed:", error));
+        }
+        musicStarted = true;
+    }
+}
+
+document.addEventListener('click', playBackgroundMusic);
+
+
+window.addEventListener('load', function() {
+    const bgMusic = document.getElementById("backgroundMusic");
+    bgMusic.muted = true;
+    bgMusic.volume = 0.3;
+    bgMusic.play().catch(error => console.log("Muted autoplay failed:", error));
+});
 
 function stats(){
 
@@ -34,7 +59,7 @@ function slapen() {
     if (Slaap > 100) Slaap = 100;
     document.getElementById("SlaapStat").innerText = Slaap;
     
-    // Play sleep sound
+  
     const sleepSound = document.getElementById("sleepSound");
     sleepSound.currentTime = 0;
     sleepSound.play().catch(error => console.log("Sound play failed:", error));
@@ -45,7 +70,7 @@ function spelen() {
     if (Plezier > 100) Plezier = 100;
     document.getElementById("PlezierStat").innerText = Plezier;
     
-    // Play play sound
+
     const playSound = document.getElementById("playSound");
     playSound.currentTime = 0;
     playSound.play().catch(error => console.log("Sound play failed:", error));
