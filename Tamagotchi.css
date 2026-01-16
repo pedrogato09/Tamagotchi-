@@ -64,6 +64,67 @@ body {
 #Slaap, #SlaapStat   { color: #388e3c; }
 #Plezier, #PlezierStat { color: #7b1fa2; }
 
+     min-height: 60px;
+     text-align: center;
+ }
+ 
+ #ChatBox p {
+     display: none;
+     margin: 4px 0;
+ }
+
+#Eten {
+position: relative;
+top: 50px;
+padding: 20px;
+left: -20px;
+border-radius: 100%;
+background-color: #d32f2f;
+border: solid 2px #333;
+}
+#Slapen {
+position: relative;
+top: 80px;
+padding: 20px;
+border-radius: 100%;
+background-color: #388e3c;
+border: solid 2px #333;
+}
+#Spelen {
+position: relative;
+top: 50px;
+padding: 20px;
+left: 20px;
+border-radius: 100%;
+background-color: #7b1fa2;
+border: solid 2px #333;
+}
+
+#ChatBox {
+    min-height: 60px;
+    text-align: center;
+    position: relative;
+    top: 55px;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: #bdaec4;
+    border: solid 2px #333;
+    display: none;
+    margin: 4px 0;
+    transition: all 0.5s ease-in-out;
+}
+
+#ChatBox p {
+    display: none;
+    margin: 4px 0;
+    transition: all 0.5s ease-in-out;
+}
+
+#TextHonger, #TextSlaap, #TextPlezier {
+    font-size: 12px;
+    padding: 5px 0;
+    display: none;
+}
 
 
 /* 
@@ -143,4 +204,5 @@ body {
 
     /* Reduced scale as requested */
     transform: scale(2.5);
+
 }
