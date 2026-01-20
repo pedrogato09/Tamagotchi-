@@ -12,13 +12,13 @@
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     min-height: 100vh;
     background-color: var(--bg-color);
     margin: 0;
     font-family: 'Press Start 2P', cursive, monospace;
-    gap: 60px; /* Space between stats and cat */
+    padding: 20px;
     
     /* Retro grid background */
     background-image: 
@@ -33,29 +33,64 @@ body {
     border: 4px solid var(--border-color);
     border-radius: 12px;
     box-shadow: 6px 6px 0 rgba(0,0,0,0.1);
-    text-align: left;
-    min-width: 250px;
+    text-align: center;
     
-    /* Replaced absolute positioning with Flexbox flow */
-    position: relative;
-    top: -120px;
-    
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
     align-items: center;
+    justify-content: center;
+}
+
+#EmotieContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: linear-gradient(135deg, #ffe5b4 0%, #ffcccc 100%);
+    border: 3px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+    min-width: 120px;
+}
+
+#Emotie {
+    font-size: 48px;
+    line-height: -1;
+    margin-bottom: 5px;
+    animation: emotieAnimation 0.5s ease-in-out;
+}
+
+#EmotieText {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+@keyframes emotieAnimation {
+    0% { transform: scale(1); }
+    0% { transform: scale(1.2); }
+    0%{ transform: scale(1); }
 }
 
 /* Labels */
 #Honger, #Slaap, #Plezier {
-    font-size: 12px;
-    padding: 5px 0;
+    font-size: 11px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    background: #f5f5f5;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    min-width: 80px;
 }
 
 /* Values */
 #HongerStat, #SlaapStat, #PlezierStat {
     font-size: 12px;
-    text-align: right;
     font-weight: bold;
 }
 
@@ -64,53 +99,85 @@ body {
 #Slaap, #SlaapStat   { color: #388e3c; }
 #Plezier, #PlezierStat { color: #7b1fa2; }
 
+#ChatBox {
      min-height: 60px;
      text-align: center;
- }
+}
  
- #ChatBox p {
+#ChatBox p {
      display: none;
      margin: 4px 0;
- }
+}
 
-#Eten {
-position: relative;
-top: 50px;
-padding: 20px;
-left: -20px;
-border-radius: 100%;
-background-color: #d32f2f;
-border: solid 2px #333;
+#Acties {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
 }
-#Slapen {
-position: relative;
-top: 80px;
-padding: 20px;
-border-radius: 100%;
-background-color: #388e3c;
-border: solid 2px #333;
+
+#Acties button {
+    padding: 15px 20px;
+    border-radius: 50%;
+    border: solid 2px #333;
+    font-family: 'Press Start 2P', cursive, monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
 }
-#Spelen {
-position: relative;
-top: 50px;
-padding: 20px;
-left: 20px;
-border-radius: 100%;
-background-color: #7b1fa2;
-border: solid 2px #333;
+
+#Acties button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#Acties button:active {
+    transform: scale(0.95);
+}
+
+#Acties button:nth-child(1) {
+    background-color: #d32f2f;
+}
+
+#Acties button:nth-child(2) {
+    background-color: #388e3c;
+}
+
+#Acties button:nth-child(3) {
+    background-color: #7b1fa2;
+}
+
+#ChatBox.show {
+    display: block;
+}
+
+#ChatBox p {
+    display: none;
+    margin: 4px 0;
+    transition: all 0.5s ease-in-out;
+    font-size: 11px;
+}
+
+#ChatBox p.show {
+    display: block;
 }
 
 #ChatBox {
-    min-height: 60px;
+    min-height: 50px;
     text-align: center;
-    position: relative;
-    top: 55px;
     padding: 15px;
     border-radius: 20px;
     background-color: #bdaec4;
     border: solid 2px #333;
     display: none;
-    margin: 4px 0;
+    margin: 0;
     transition: all 0.5s ease-in-out;
 }
 
@@ -132,6 +199,7 @@ border: solid 2px #333;
     - Smaller overall size
     - Higher resolution grid for more detail
 */
+
 .pixel-cat {
     /* 
        Smaller pixel size for more detail 
@@ -140,6 +208,7 @@ border: solid 2px #333;
     width: 1em;
     height: 1em;
     color: #222;
+    margin: 40px 0;
     
     /* 
        Coordinate system: 1em = 5px
