@@ -121,7 +121,8 @@ setInterval(stats, 1000)
     updateEmotie();
 function eten() {
     Honger += 10;
-    Plezier -= 5;
+
+    if (Plezier > 5) Plezier -= 5;
     if (Honger > 100) Honger = 100;
     document.getElementById("HongerStat").innerText = Honger;
 
@@ -133,7 +134,7 @@ function eten() {
 
 function slapen() {
     Slaap += 10;
-    Honger -= 5;
+    if (Honger > 5) Honger -= 5;
     if (Slaap > 100) Slaap = 100;
     document.getElementById("SlaapStat").innerText = Slaap;
 
@@ -144,7 +145,7 @@ function slapen() {
 
 function spelen() {
     Plezier += 10;
-    Slaap -= 5;
+    if (Slaap > 5) Slaap -= 5;
     updateEmotie();
     if (Plezier > 100) Plezier = 100;
     document.getElementById("PlezierStat").innerText = Plezier;
