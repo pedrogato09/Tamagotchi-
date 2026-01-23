@@ -2,6 +2,7 @@ let Honger = 101
 let Slaap = 101
 let Plezier = 101
 let musicStarted = false;
+let isDead = false;
 
 const emoties = [
     { name: "blij", emoji: "😊", text: "Blij" },
@@ -12,10 +13,16 @@ const emoties = [
     { name: "vrolijk", emoji: "😂", text: "Vrolijk" },
     { name: "neutraal", emoji: "😐", text: "Neutraal" },
     { name: "verliefd", emoji: "😍", text: "Verliefd" },
-    { name: "slaperig", emoji: "😪", text: "Slaperig" }
+    { name: "slaperig", emoji: "😪", text: "Slaperig" },
+    { name: "dood", emoji: "💀", text: "Dood" }
 ];
 
 function bepaalEmotie() {
+    // Als de kat dood is: dood
+    if (isDead) {
+        return emoties.find(e => e.name === "dood");
+    }
+    
     // Als veel stats laag zijn: verdrietig
     if (Honger <= 20 && Slaap <= 20 && Plezier <= 20) {
         return emoties.find(e => e.name === "verdrietig");
@@ -96,6 +103,14 @@ function stats() {
      if(Plezier > 0) {
         Plezier -= 1;
     }
+    
+    // Check if Tamagotchi is dead
+    if (!isDead && (Honger === 0 || Slaap === 0 || Plezier === 0)) {
+        isDead = true;
+        document.querySelector(".pixel-cat").classList.add("dead");
+        alert("Je Tamagotchi is overleden. Ververs de pagina om opnieuw te beginnen.");
+    }
+    
          console.log(Honger, Slaap, Plezier)
         document.getElementById("HongerStat").innerText = Honger;
         document.getElementById("SlaapStat").innerText = Slaap;
@@ -158,3 +173,11 @@ function spelen() {
 Honger = Math.max(0, Honger - 1);
 Slaap = Math.max(0, Slaap - 1);
 Plezier = Math.max(0, Plezier - 1);
+
+if (Honger === 0 || Slaap === 0 || Plezier === 0) {
+    alert("Je Tamagotchi is overleden. Ververs de pagina om opnieuw te beginnen.");
+    Honger = 100;
+    Slaap = 100;
+    Plezier = 100;
+}
+updateEmotie();
