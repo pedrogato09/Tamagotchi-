@@ -2,7 +2,10 @@ let Honger = 101
 let Slaap = 101
 let Plezier = 101
 let musicStarted = false;
-let isDead = false;
+let HongerCooldown = false
+let SlaapCooldown = false
+let PlezierCooldown = false
+let gameOver = false;
 
 const emoties = [
     { name: "blij", emoji: "😊", text: "Blij" },
@@ -13,16 +16,10 @@ const emoties = [
     { name: "vrolijk", emoji: "😂", text: "Vrolijk" },
     { name: "neutraal", emoji: "😐", text: "Neutraal" },
     { name: "verliefd", emoji: "😍", text: "Verliefd" },
-    { name: "slaperig", emoji: "😪", text: "Slaperig" },
-    { name: "dood", emoji: "💀", text: "Dood" }
+    { name: "slaperig", emoji: "😪", text: "Slaperig" }
 ];
 
 function bepaalEmotie() {
-    // Als de kat dood is: dood
-    if (isDead) {
-        return emoties.find(e => e.name === "dood");
-    }
-    
     // Als veel stats laag zijn: verdrietig
     if (Honger <= 20 && Slaap <= 20 && Plezier <= 20) {
         return emoties.find(e => e.name === "verdrietig");
@@ -94,6 +91,9 @@ window.addEventListener('load', function() {
 
 
 function stats() {
+
+    if (gameOver) return;
+
     if (Honger > 0) {
         Honger -= 1;
     }
@@ -103,14 +103,14 @@ function stats() {
      if(Plezier > 0) {
         Plezier -= 1;
     }
-    
-    // Check if Tamagotchi is dead
-    if (!isDead && (Honger === 0 || Slaap === 0 || Plezier === 0)) {
-        isDead = true;
-        document.querySelector(".pixel-cat").classList.add("dead");
-        alert("Je Tamagotchi is overleden. Ververs de pagina om opnieuw te beginnen.");
+    if (gameOver) return;
+
+    if (Honger <= 0 || Slaap <= 0 || Plezier <= 0) {
+    gameOver = true;
+    document.getElementById("GameOver").classList.add("show");
+    console.log("GAME OVER!")
+    // show screen
     }
-    
          console.log(Honger, Slaap, Plezier)
         document.getElementById("HongerStat").innerText = Honger;
         document.getElementById("SlaapStat").innerText = Slaap;
@@ -135,32 +135,53 @@ setInterval(stats, 1000)
 
     updateEmotie();
 function eten() {
+    if (HongerCooldown) return;
+    
+    HongerCooldown = true;
+
     Honger += 10;
 
-    if (Plezier > 5) Plezier -= 5;
+    if (Plezier > 2) Plezier -= 2;
     if (Honger > 100) Honger = 100;
     document.getElementById("HongerStat").innerText = Honger;
 
     const eatSound = document.getElementById("eatSound");
     eatSound.currentTime = 0;
     eatSound.play().catch(error => console.log("Sound play failed:", error));
+
+
+    setTimeout(() => {
+  HongerCooldown = false;
+}, 2000);
 }
     updateEmotie();
 
 function slapen() {
+    if (SlaapCooldown) return;
+    
+    SlaapCooldown = true;
+
     Slaap += 10;
-    if (Honger > 5) Honger -= 5;
+    if (Honger > 2) Honger -= 2;
     if (Slaap > 100) Slaap = 100;
     document.getElementById("SlaapStat").innerText = Slaap;
 
     const sleepSound = document.getElementById("sleepSound");
     sleepSound.currentTime = 0;
     sleepSound.play().catch(error => console.log("Sound play failed:", error));
+
+    setTimeout(() => {
+    SlaapCooldown = false;
+}, 2000);
 }
 
 function spelen() {
+    if (PlezierCooldown) return;
+    
+    PlezierCooldown = true;
+
     Plezier += 10;
-    if (Slaap > 5) Slaap -= 5;
+    if (Slaap > 2) Slaap -= 2;
     updateEmotie();
     if (Plezier > 100) Plezier = 100;
     document.getElementById("PlezierStat").innerText = Plezier;
@@ -168,16 +189,12 @@ function spelen() {
     const playSound = document.getElementById("playSound");
     playSound.currentTime = 0;
     playSound.play().catch(error => console.log("Sound play failed:", error));
+
+    setTimeout(() => {
+    PlezierCooldown = false;
+},  2000);
 }
 
 Honger = Math.max(0, Honger - 1);
 Slaap = Math.max(0, Slaap - 1);
 Plezier = Math.max(0, Plezier - 1);
-
-if (Honger === 0 || Slaap === 0 || Plezier === 0) {
-    alert("Je Tamagotchi is overleden. Ververs de pagina om opnieuw te beginnen.");
-    Honger = 100;
-    Slaap = 100;
-    Plezier = 100;
-}
-updateEmotie();
