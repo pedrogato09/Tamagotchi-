@@ -52,6 +52,22 @@ body {
   pointer-events: auto;  /* now clicks work on overlay buttons */
 }
 
+#RestartBtn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: solid 2px #333;
+    font-family: 'Press Start 2P', cursive, monospace;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#RestartBtn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+
 
 #Stats {
     background-color: #fff;
