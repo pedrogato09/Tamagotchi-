@@ -5,7 +5,8 @@ let musicStarted = false;
 let HongerCooldown = false
 let SlaapCooldown = false
 let PlezierCooldown = false
-let gameOver = false;
+let GameOver = false;
+const RestartBtn = document.getElementById("RestartBtn");
 
 const emoties = [
     { name: "blij", emoji: "😊", text: "Blij" },
@@ -92,7 +93,7 @@ window.addEventListener('load', function() {
 
 function stats() {
 
-    if (gameOver) return;
+    if (GameOver) return;
 
     if (Honger > 0) {
         Honger -= 1;
@@ -103,10 +104,10 @@ function stats() {
      if(Plezier > 0) {
         Plezier -= 1;
     }
-    if (gameOver) return;
+    if (GameOver) return;
 
     if (Honger <= 0 || Slaap <= 0 || Plezier <= 0) {
-    gameOver = true;
+    GameOver = true;
     document.getElementById("GameOver").classList.add("show");
     console.log("GAME OVER!")
     // show screen
@@ -130,6 +131,18 @@ document.getElementById("TextSlaap").classList.toggle("show", Slaap <= 30);
 document.getElementById("TextPlezier").classList.toggle("show", Plezier <= 30);
     
 }
+
+RestartBtn.addEventListener("click", function(){ 
+    GameOver = false;
+    document.getElementById("GameOver").classList.remove("show");
+    Honger = 101;
+    Slaap = 101;
+    Plezier = 101;
+    document.getElementById("HongerStat").innerText = Honger;
+    document.getElementById("SlaapStat").innerText = Slaap;
+    document.getElementById("PlezierStat").innerText = Plezier;
+    updateEmotie();
+})
 
 setInterval(stats, 1000)
 
