@@ -2,9 +2,9 @@ let Honger = 101
 let Slaap = 101
 let Plezier = 101
 let musicStarted = false;
-let HongerCooldown = false
-let SlaapCooldown = false
-let PlezierCooldown = false
+let HongerCooldown = false;
+let SlaapCooldown = false;
+let PlezierCooldown = false;
 let GameOver = false;
 const RestartBtn = document.getElementById("RestartBtn");
 
@@ -135,9 +135,9 @@ document.getElementById("TextPlezier").classList.toggle("show", Plezier <= 30);
 RestartBtn.addEventListener("click", function(){ 
     GameOver = false;
     document.getElementById("GameOver").classList.remove("show");
-    Honger = 101;
-    Slaap = 101;
-    Plezier = 101;
+    Honger = 100;
+    Slaap = 100;
+    Plezier = 100;
     document.getElementById("HongerStat").innerText = Honger;
     document.getElementById("SlaapStat").innerText = Slaap;
     document.getElementById("PlezierStat").innerText = Plezier;
